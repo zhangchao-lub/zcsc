@@ -34,12 +34,6 @@ public class MainController {
     @Autowired
     LoadBalancerClient lb;
 
-    @GetMapping("getHi")//Spring4.3版本以后,@GetMapping等价于@RequestMapping的GET请求方式
-    public String getHi() {
-        log.info("hi");
-        return "hello";
-    }
-
     @GetMapping("client")
     public String client() {
         List<String> services = client.getServices();
@@ -49,10 +43,10 @@ public class MainController {
     @GetMapping("client2")
     public Object client2() {
         //具体服务
-//        List<InstanceInfo> instances = client2.getInstancesById("172.16.2.166:sc-eureka-consumer:710");
+//        List<InstanceInfo> instances = client2.getInstancesById("172.16.2.166:sc-eureka-provider:710");
 
         //使用服务名 找列表
-        List<InstanceInfo> instances = client2.getInstancesByVipAddress("sc-eureka-consumer", false);
+        List<InstanceInfo> instances = client2.getInstancesByVipAddress("sc-eureka-provider", false);
         for (InstanceInfo ins : instances) {
             log.info(ToStringBuilder.reflectionToString(ins));
         }
@@ -75,7 +69,7 @@ public class MainController {
     public Object client3() {
 
         // ribbon 完成客户端的负载均衡，过滤掉down了的节点
-        ServiceInstance choose = lb.choose("sc-eureka-consumer");
+        ServiceInstance choose = lb.choose("sc-eureka-provider");
         String url = null;
         String respStr = null;
 
