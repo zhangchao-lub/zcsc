@@ -11,6 +11,7 @@ eureka:
     #拉取服务注册信息，默认30秒
     registry-fetch-interval-seconds: 5
     #开启健康检查（用于上报节点信息，需要spring-boot-starter-actuator依赖）
+    #详情查看http://localhost:7101//actuator
     healthcheck:
       enabled: true
   instance:
