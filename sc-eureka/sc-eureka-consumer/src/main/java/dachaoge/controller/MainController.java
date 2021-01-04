@@ -74,6 +74,7 @@ public class MainController {
     @GetMapping("client3")
     public Object client3() {
 
+        // ribbon 完成客户端的负载均衡，过滤掉down了的节点
         ServiceInstance choose = lb.choose("sc-eureka-consumer");
         String url = null;
         String respStr = null;
