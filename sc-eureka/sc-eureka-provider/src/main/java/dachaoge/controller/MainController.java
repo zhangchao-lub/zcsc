@@ -29,10 +29,6 @@ public class MainController {
 
     @Autowired
     DiscoveryClient client;
-    @Resource
-    EurekaClient client2;
-    @Autowired
-    LoadBalancerClient lb;
 
     @GetMapping("getHi")//Spring4.3版本以后,@GetMapping等价于@RequestMapping的GET请求方式
     public String getHi() {
