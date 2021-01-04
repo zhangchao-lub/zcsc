@@ -1,0 +1,22 @@
+#服务端口
+server:
+  port: 7001
+eureka:
+  client:
+    #是否注册自己
+    registerWithEureka: true
+    #获取客户端信息
+    fetchRegistry: true
+    #如果单机两个服务ip地址一样，配置不同的主机名
+    service-url:
+#      defaultZone: http://euk2.com:7002/eureka
+      defaultZone: http://euk1.com:7001/eureka
+  #hostname 是用来查找主机的
+  #appname 是用来标识分组的
+  instance:
+    hostname: euk1.com
+  server:
+    #关闭自我保护机制
+    enable-self-preservation: false
+    #失效服务时间
+    eviction-interval-timer-in-ms: 3000

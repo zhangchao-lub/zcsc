@@ -1,0 +1,8 @@
+rootProject.name = 'zcsc'
+
+include 'sc-provider:sc-web'
+include 'sc-provider:sc-web-auth'
+include 'sc-eureka:sc-eureka-server'
+include 'sc-eureka:sc-eureka-provider'
+include 'sc-eureka:sc-eureka-consumer'
+

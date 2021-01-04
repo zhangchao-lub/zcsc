@@ -1,0 +1,102 @@
+//本地脚本配置
+buildscript {
+    //定义版本变量
+    ext {//依赖版本
+        springBootVersion = '2.3.7.RELEASE'
+        springCloudVersion = "Hoxton.SR9"
+    }
+    //仓库地址
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+    dependencies {
+        //引入gradle所需要的依赖，这里是支持此项目的基本依赖
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply from: 'dependencies.gradle'
+
+//全局通用配置
+allprojects {
+
+    ext {
+        springBootAdminVersion = '2.3.7'
+    }
+
+    group = 'com.dachaoge'
+    version = '1.0.0-SNAPSHOT'
+
+    //仓库地址
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+}
+//子模块配置
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    // 指定JDK版本
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // 指定编码格式
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    dependencyManagement {
+        imports {
+            //spring bom helps us to declare dependencies without specifying version numbers.
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+        }
+    }
+
+    configurations {
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        all*.exclude group: 'org.slf4j', module: 'slf4j-simple'
+        all*.exclude group: 'org.slf4j', module: 'slf4j-jdk14'
+
+        //移除spring boot 默认logger依赖
+//        all*.exclude module: 'spring-boot-starter-logging'
+
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter'
+        compile "org.springframework.boot:spring-boot-devtools"
+        testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        
+        //Netty
+        compile group: 'io.netty', name: 'netty-all', version: '4.1.42.Final'
+        
+        //单元测试
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        
+        //lombok
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor (
+                'org.springframework.boot:spring-boot-configuration-processor',
+                'org.projectlombok:lombok'
+        )
+
+        // gradle高版本弃用compile
+        apiElements 'org.apache.commons:commons-math3:3.6.1'
+    }
+//    jar {
+//        manifest.attributes provider: 'gradle'
+//    }
+}
+ 
+ 
