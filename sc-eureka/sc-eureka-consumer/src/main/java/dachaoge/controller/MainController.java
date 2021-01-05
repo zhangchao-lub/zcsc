@@ -55,7 +55,7 @@ public class MainController {
         if (instances.size() > 0) {
             InstanceInfo instanceInfo = instances.get(0);
             if (instanceInfo.getStatus() == InstanceInfo.InstanceStatus.UP) {
-                url = "http://" + instanceInfo.getHostName() + ":" + instanceInfo.getPort() + "/demo/getHi";
+                url = "http://" + instanceInfo.getHostName() + ":" + instanceInfo.getPort() + "/getHi";
                 log.info("url:" + url);
                 RestTemplate restTemplate = new RestTemplate();
                 respStr = restTemplate.getForObject(url, String.class);
@@ -73,7 +73,7 @@ public class MainController {
         String url = null;
         String respStr = null;
 
-        url = choose.getUri() + "/demo/getHi";
+        url = choose.getUri() + "/getHi";
         log.info("url:" + url);
         RestTemplate restTemplate = new RestTemplate();
         respStr = restTemplate.getForObject(url, String.class);

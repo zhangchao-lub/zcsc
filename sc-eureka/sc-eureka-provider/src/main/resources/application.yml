@@ -19,9 +19,12 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # 续约到期时间 默认90秒（租期到期时间）
     lease-expiration-duration-in-seconds: 60
-    # 自定义信息
+#    # 自定义信息
     metadata-map:
+#      user: zc
       user: zc2
+#    hostname: euk1.com
+    hostname: euk2.com
 spring:
   application:
     name: sc-eureka-provider

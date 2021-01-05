@@ -1,20 +1,11 @@
 package dachaoge.controller;
 
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.EurekaClient;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author czhang@mindpointeye.com
@@ -22,25 +13,21 @@ import java.util.List;
  * @Date 2020/12/23 16:27
  * @descrption
  */
-@RestController
-@RequestMapping("demo")
 @Slf4j
+@RestController
 public class MainController {
 
-    @Autowired
-    DiscoveryClient client;
+    @Value("${server.port}")
+    String port;
+
 
     @GetMapping("getHi")//Spring4.3版本以后,@GetMapping等价于@RequestMapping的GET请求方式
+    @RefreshScope
     public String getHi() {
-        log.info("hi");
-        return "hi";
+        log.info("Hi!,我的port：" + port);
+        return "Hi!,我的port：" + port;
     }
 
-    @GetMapping("client")
-    public String client() {
-        List<String> services = client.getServices();
-        return services.toString();
-    }
 
 }
 
