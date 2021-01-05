@@ -59,6 +59,7 @@ subprojects {
             //spring bom helps us to declare dependencies without specifying version numbers.
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
         }
     }
 

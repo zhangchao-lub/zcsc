@@ -1,12 +1,5 @@
 server:
-  port: 7201
-spring:
-  application:
-    name: sc-eureka-consumer
-  security:
-    user:
-      name: zhangchao
-      password: eureka123
+  port: 7102
 eureka:
   #  instance:
   #    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
@@ -15,14 +8,28 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@euk1.com:7001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@euk2.com:7002/eureka/
-    #拉取服务注册信息，默认30秒
+    # 拉取服务注册信息，默认30秒
     registry-fetch-interval-seconds: 5
-    #开启健康检查（用于上报节点信息，需要spring-boot-starter-actuator依赖）
-    #详情查看http://localhost:7101//actuator
+    # 开启健康检查（用于上报节点信息，需要spring-boot-starter-actuator依赖）
+    # 详情查看http://localhost:7101//actuator
     healthcheck:
       enabled: true
   instance:
-    #持续发送间隔默认30秒，心跳间隔（租期更新时间间隔）
+    # 持续发送间隔默认30秒，心跳间隔（租期更新时间间隔）
     lease-renewal-interval-in-seconds: 5
-    #续约到期时间 默认90秒（租期到期时间）
+    # 续约到期时间 默认90秒（租期到期时间）
     lease-expiration-duration-in-seconds: 60
+#    # 自定义信息
+    metadata-map:
+      user: zc2
+    hostname: euk2.com
+# 开启所有节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# 可以远程关闭服务节点
+  endpoint:
+    shutdown:
+      enabled: true

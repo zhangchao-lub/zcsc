@@ -1,4 +1,6 @@
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
 }

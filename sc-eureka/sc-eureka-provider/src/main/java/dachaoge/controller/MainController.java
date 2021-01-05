@@ -1,10 +1,11 @@
 package dachaoge.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,7 +29,15 @@ public class MainController {
         return "Hi!,我的port：" + port;
     }
 
+    @Autowired
+    HealthStatusService hss;
 
+    /** 手动设置服务的上下线*/
+    @GetMapping("health")
+    public String health(@RequestParam("status") Boolean status){
+        hss.setStatus(status);
+        return hss.getStatus();
+    }
 }
 
 

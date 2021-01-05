@@ -3,3 +3,7 @@ spring:
     active: euk2
   application:
     name: sc-eureka-server
+  security:
+    user:
+      name: zhangchao
+      password: eureka123
