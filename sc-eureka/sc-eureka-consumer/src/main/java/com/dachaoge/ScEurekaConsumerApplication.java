@@ -1,4 +1,4 @@
-package dachaoge;
+package com.dachaoge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class ScEurekaProviderApplication {
+public class ScEurekaConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ScEurekaProviderApplication.class,args);
+        SpringApplication.run(ScEurekaConsumerApplication.class,args);
     }
 }

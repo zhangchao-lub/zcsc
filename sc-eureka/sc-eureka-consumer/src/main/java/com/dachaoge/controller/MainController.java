@@ -1,4 +1,4 @@
-package dachaoge.controller;
+package com.dachaoge.controller;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
