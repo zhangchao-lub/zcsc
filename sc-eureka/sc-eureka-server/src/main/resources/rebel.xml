@@ -9,9 +9,9 @@
 	<id>zcsc.sc-eureka.sc-eureka-server</id>
 
 	<classpath>
-		<dir name="${rebel.projectpath.zcsc.sc-eureka.sc-eureka-server.main}/out\production\resources">
+		<dir name="C:/Users/GZWX/Desktop/zcsc/sc-eureka/sc-eureka-server/out/production/resources">
 		</dir>
-		<dir name="${rebel.projectpath.zcsc.sc-eureka.sc-eureka-server.main}/out\production\classes">
+		<dir name="C:/Users/GZWX/Desktop/zcsc/sc-eureka/sc-eureka-server/out/production/classes">
 		</dir>
 	</classpath>
 
