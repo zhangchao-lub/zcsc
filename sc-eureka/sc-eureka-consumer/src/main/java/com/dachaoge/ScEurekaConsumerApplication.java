@@ -4,7 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author czhang@mindpointeye.com
@@ -16,13 +19,15 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class ScEurekaConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ScEurekaConsumerApplication.class,args);
+        SpringApplication.run(ScEurekaConsumerApplication.class, args);
     }
 
     @Bean
     @LoadBalanced
-    RestTemplate getRestTemplate(){
-        return new RestTemplate();
+    RestTemplate getRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
     }
 //    @Bean
 //    public IRule myRule(){

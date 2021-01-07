@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: euk3
+    active: euk1
   application:
     name: sc-eureka-provider
   security:
