@@ -1,0 +1,5 @@
+server:
+  port: 7601
+spring:
+  application:
+    name: sc-user-api

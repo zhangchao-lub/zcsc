@@ -3,7 +3,7 @@ buildscript {
     //定义版本变量
     ext {//依赖版本
         springBootVersion = '2.3.7.RELEASE'
-        springCloudVersion = "Hoxton.SR9"
+        springCloudVersion = "Hoxton.SR9"//霍克斯顿
     }
     //仓库地址
     repositories {

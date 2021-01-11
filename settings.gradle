@@ -5,4 +5,7 @@ include 'sc-provider:sc-web-auth'
 include 'sc-eureka:sc-eureka-server'
 include 'sc-eureka:sc-eureka-provider'
 include 'sc-eureka:sc-eureka-consumer'
+include 'sc-user:sc-user-provider'
+include 'sc-user:sc-user-consumer'
+include 'sc-user:sc-user-api'
 

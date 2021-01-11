@@ -7,7 +7,6 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.StandardCharsets;
 
 /**
  * @author czhang@mindpointeye.com
