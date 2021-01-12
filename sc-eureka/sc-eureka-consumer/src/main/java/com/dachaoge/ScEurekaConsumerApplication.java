@@ -31,7 +31,7 @@ public class ScEurekaConsumerApplication {
     }
 //    @Bean
 //    public IRule myRule(){
-//        /** 声明ribbon的选择策略*/
+//        /** 手动声明ribbon的选择策略*/
 //        //区域轮询策略
 ////        return new RoundRobinRule();
 //        //重复策略

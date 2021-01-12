@@ -27,7 +27,7 @@ eureka:
     # 续约到期时间 默认90秒（租期到期时间）
     lease-expiration-duration-in-seconds: 60
 
-## 配置文件负载均衡策略
+## 配置文件手动负载均衡策略
 sc-eureka-provider:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule

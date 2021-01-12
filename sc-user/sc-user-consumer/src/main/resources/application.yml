@@ -27,8 +27,14 @@ eureka:
     # 续约到期时间 默认90秒（租期到期时间）
     lease-expiration-duration-in-seconds: 60
 
-## 配置文件负载均衡策略
-sc-eureka-provider:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
-
+ribbon:
+  # 连接超时(ms)
+  ConnectTimeout: 1000
+  # 业务逻辑超时(ms)
+  ReadTimeout: 6000
+  # 同一台实例最大重试次数，不包括首次调用
+  MaxAutoRetries: 0
+  # 重试负载均衡其他实例最大重试次数，不包括首次调用
+  MaxAutoRetriesNextServer: 1
+  # 是否所有操作都重试
+  OkToRetryOnAllOperations: false

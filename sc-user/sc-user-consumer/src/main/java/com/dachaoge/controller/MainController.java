@@ -41,10 +41,14 @@ public class MainController {
     /**
      *
      * 降级
+     *   try{
      *
+     *   }
      *
      * 隔离
+     *   try{
      *
+     *   }
      * 熔断
      *
      * 自己写

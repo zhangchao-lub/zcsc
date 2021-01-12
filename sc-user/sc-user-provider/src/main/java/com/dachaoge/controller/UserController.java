@@ -34,14 +34,14 @@ public class UserController implements UserApi {
         try {
             log.info("准备睡");
 
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         int i = count.getAndIncrement();
-        log.info(port + " 好的 ====第：" + i + "次调用");
+        log.info(port + " 好的 ====第：" + (i+1) + "次调用");
         return "port:" + port;
 
     }
