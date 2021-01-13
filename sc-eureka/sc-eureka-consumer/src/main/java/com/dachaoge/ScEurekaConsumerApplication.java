@@ -26,6 +26,7 @@ public class ScEurekaConsumerApplication {
     RestTemplate getRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
 //        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        //添加拦截器
         restTemplate.getInterceptors().add(new LoggingClientHttpRequestInterceptor());
         return restTemplate;
     }

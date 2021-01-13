@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2021/1/8 10:19
  * @descrption
  */
-@RequestMapping("user")
+//@RequestMapping("user")// feign自带的BUG 会重复注册两次mapping
 public interface UserApi {
 
     /**
@@ -25,7 +25,7 @@ public interface UserApi {
     @GetMapping("getById")
     public String getById(@RequestParam("id") Integer id);
 
-    @PostMapping("/postPerson")
+    @PostMapping("postPerson")
     public Person postPerson(@RequestBody Person person);
 
 }

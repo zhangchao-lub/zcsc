@@ -1,4 +1,4 @@
-package com.dachaoge.controller;
+package com.dachaoge.api;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;

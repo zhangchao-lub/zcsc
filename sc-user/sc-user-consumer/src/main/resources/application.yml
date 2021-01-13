@@ -38,3 +38,30 @@ ribbon:
   MaxAutoRetriesNextServer: 1
   # 是否所有操作都重试
   OkToRetryOnAllOperations: false
+
+# 启用 hystrix 熔断机制
+feign:
+  hystrix:
+    enabled: true
+# hystrix 默认超时1s
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+      # 设置熔断器失败的个数，默认为20个，这里我给了100个，只有超过100个才会发生短路
+      circuitBreaker:
+        requestVolumeThreshold: 100
+    # fallback 线程数量
+    fallBack:
+      isolation:
+        semaphone:
+          maxConcurrentRequests: 50
+  # feign 线程池大小 默认为10
+  threadpool:
+    default:
+      coreSize: 100

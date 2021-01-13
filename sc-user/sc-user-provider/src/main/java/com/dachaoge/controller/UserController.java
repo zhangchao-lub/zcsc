@@ -34,14 +34,25 @@ public class UserController implements UserApi {
         try {
             log.info("准备睡");
 
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
+            Thread.sleep(8000);
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         int i = count.getAndIncrement();
         log.info(port + " 好的 ====第：" + (i+1) + "次调用");
+        return "port:" + port;
+
+    }
+
+    @GetMapping("getUp")
+    public String getUp() {
+            log.info("起床了");
+
+            int i=1/0;
+
+
         return "port:" + port;
 
     }
@@ -67,20 +78,20 @@ public class UserController implements UserApi {
         }
     }
 
-    @GetMapping("/getMap")
+    @GetMapping("getMap")
     public Map<Integer, String> getMap(@RequestParam("id") Integer id) {
 
         log.info(String.valueOf(id));
         return Collections.singletonMap(id, "妄想山海");
     }
-    @GetMapping("/getMap2")
+    @GetMapping("getMap2")
     public Map<Integer, String> getMap2(Integer id,String name) {
         // TODO Auto-generated method stub
         log.info(String.valueOf(id));
         return Collections.singletonMap(id, name);
     }
 
-    @GetMapping("/getMap3")
+    @GetMapping("getMap3")
     public Map<Integer, String> getMap3(@RequestParam Map<String, Object> map) {
         // TODO Auto-generated method stub
         log.info(map.toString());
@@ -88,7 +99,7 @@ public class UserController implements UserApi {
     }
 
 
-    @PostMapping("/postMap")
+    @PostMapping("postMap")
     public Map<Integer, String> postMap(@RequestBody Map<String, Object> map) {
         // TODO Auto-generated method stub
         log.info(map.toString());
@@ -96,6 +107,7 @@ public class UserController implements UserApi {
     }
 
     @Override
+    @PostMapping("postPerson")
     public Person postPerson(Person person) {
         log.info(person.toString());
         log.info(ToStringBuilder.reflectionToString(person));

@@ -1,6 +1,5 @@
 package com.dachaoge.api;
 
-import com.dachaoge.api.UserApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +27,8 @@ import java.util.Map;
  */
 
 //@FeignClient(name = "ooxx",url = "http://localhost:7301")
-@FeignClient(name = "sc-user-provider")
+//@FeignClient(name = "sc-user-provider",fallback = ScUserProviderBack.class)
+@FeignClient(name = "sc-user-provider",fallbackFactory = ScUserProviderBackFactory.class)
 public interface ConsumerApi extends UserApi {
     /**
      * 这里 getMapping 是给Feign看的 get请求 sc-user-provider/getMap?id={1}
@@ -38,18 +38,18 @@ public interface ConsumerApi extends UserApi {
      * @param id
      * @return
      */
-    @GetMapping("/getMap")
+    @GetMapping("getMap")
     Map<Integer, String> getMap(@RequestParam("id") Integer id);
 
-
-
-    @GetMapping("/getMap2")
+    @GetMapping("getMap2")
     Map<Integer, String> getMap2(@RequestParam("id") Integer id,@RequestParam("name") String name);
 
-    @GetMapping("/getMap3")
+    @GetMapping("getMap3")
     Map<Integer, String> getMap3(@RequestParam Map<String, Object> map);
 
-    @PostMapping("/postMap")
+    @PostMapping("postMap")
     Map<Integer, String> postMap(Map<String, Object> map);
 
+    @GetMapping("getUp")
+    String getUp();
 }
