@@ -37,10 +37,12 @@ public class ScUserConsumerApplication {
     }
 
     /**
+     * http://localhost:7501/actuator/hystrix.stream 页面监控
+     * http://localhost:7501/hystrix 可视化页面监控
      * 高版本springboot 自定义添加 /actuator/hystrix.stream 路径 用与DashBoard可视化工具
      * @return
      */
-    @Bean
+    @Bean//
     public ServletRegistrationBean getServlet(){
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);

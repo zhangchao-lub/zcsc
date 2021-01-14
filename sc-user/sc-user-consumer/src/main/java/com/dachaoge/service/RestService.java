@@ -23,4 +23,8 @@ public class RestService {
 
         return forObject;
     }
+
+    public String back(){
+        return "战斗力无限";
+    }
 }

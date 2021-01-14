@@ -3,6 +3,7 @@ package com.dachaoge.controller;
 import com.dachaoge.api.ConsumerApi;
 import com.dachaoge.entity.Person;
 import com.dachaoge.service.RestService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +35,14 @@ public class MainController {
         return api.alive();
     }
     @GetMapping("alive2")
+//    @HystrixCommand(defaultFallback = "back")
     public String alive2(){
-        return api.alive();
+        return restService.alive();
     }
 
+//    public String back(){
+//        return "战斗力无限";
+//    }
     @GetMapping("getUp")
     public String getUp(){
         return api.getUp();
