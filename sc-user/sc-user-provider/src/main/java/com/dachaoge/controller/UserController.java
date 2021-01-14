@@ -34,7 +34,7 @@ public class UserController implements UserApi {
         try {
             log.info("准备睡");
 
-            Thread.sleep(8000);
+            Thread.sleep(2000);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

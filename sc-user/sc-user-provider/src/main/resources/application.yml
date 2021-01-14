@@ -1,5 +1,5 @@
 server:
-  port: 7303
+  port: 7301
 spring:
   application:
     name: sc-user-provider

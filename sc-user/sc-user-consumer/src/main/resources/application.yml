@@ -65,3 +65,11 @@ hystrix:
   threadpool:
     default:
       coreSize: 100
+  # 高版本Springboot 代理流允许列表放开（否则无法使用熔断器监控可视化页面）
+  dashboard:
+    proxy-stream-allow-list: "*"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
