@@ -1,0 +1,9 @@
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    compile "de.codecentric:spring-boot-admin-starter-server:${springBootAdminVersion}"
+    compile "de.codecentric:spring-boot-admin-server-ui:${springBootAdminVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-mail'
+    
+}
