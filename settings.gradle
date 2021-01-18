@@ -8,4 +8,6 @@ include 'sc-eureka:sc-eureka-consumer'
 include 'sc-user:sc-user-provider'
 include 'sc-user:sc-user-consumer'
 include 'sc-user:sc-user-api'
+include 'sc-gateway:sc-zuul-server'
+include 'sc-monitor:sc-admin-server'
 

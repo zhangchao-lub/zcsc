@@ -1,0 +1,1 @@
+java -jar C:\Users\GZWX\Desktop\zcsc\sc-monitor\sc-zipkin-server\lib\zipkin-server-2.23.2-exec.jar

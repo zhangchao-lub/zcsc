@@ -7,3 +7,18 @@ spring:
     user:
       name: zhangchao
       password: eureka123
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8001
+management:
+  endpoints:
+    web:
+      exposure:
+        # 开启所有端点
+        include: "*"
+  endpoint:
+    health:
+      # 显示所有细节
+      show-details: always
+      enabled: true

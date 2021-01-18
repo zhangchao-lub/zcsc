@@ -23,7 +23,7 @@ apply from: 'dependencies.gradle'
 allprojects {
 
     ext {
-        springBootAdminVersion = '2.3.7'
+        springBootAdminVersion = '2.3.1'
     }
 
     group = 'com.dachaoge'

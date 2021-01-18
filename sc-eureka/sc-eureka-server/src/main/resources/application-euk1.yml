@@ -9,8 +9,8 @@ eureka:
     fetchRegistry: true
     #如果单机两个服务ip地址一样，配置不同的主机名
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@euk2.com:7002/eureka
-#      defaultZone: http://euk1.com:7001/eureka
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@euk2.com:7002/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@euk1.com:7001/eureka
 #  详情查看 http://localhost:7001/eureka/apps 自带的接口
   #hostname 是用来查找主机的
   #appname 是用来标识分组的

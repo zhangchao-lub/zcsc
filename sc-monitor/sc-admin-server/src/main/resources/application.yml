@@ -1,0 +1,30 @@
+# 后台访问地址 http://localhost:8001/wallboard
+server:
+  port: 8001
+spring:
+  application:
+    name: sc-admin-server
+  security:
+    user:
+      name: zhangchao
+      password: eureka123
+  # 邮件配置
+  mail:
+    host: smtp.qq.com
+    username: 873159034
+    password: jijilbfpgeklbajh
+    properties:
+      mail:
+        smpt:
+          auth: true
+          starttks:
+            enable: true
+            required: true
+  boot:
+    admin:
+      notify:
+        mail:
+          # 收件邮箱
+          to: 873159034@qq.com
+          # 发件邮箱
+          from: 873159034@qq.com

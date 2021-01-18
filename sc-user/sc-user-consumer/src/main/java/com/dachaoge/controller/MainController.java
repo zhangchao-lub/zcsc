@@ -6,6 +6,7 @@ import com.dachaoge.service.RestService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,9 @@ import java.util.Map;
 @Slf4j
 public class MainController {
 
+    @Value("${server.port}")
+    String port;
+
     @Autowired
     ConsumerApi api;
 
@@ -37,7 +41,8 @@ public class MainController {
     @GetMapping("alive2")
 //    @HystrixCommand(defaultFallback = "back")
     public String alive2(){
-        return restService.alive();
+
+        return "Consumer:"+port+"->>>>"+restService.alive();
     }
 
 //    public String back(){

@@ -1,0 +1,43 @@
+ribbon:
+  # 连接超时(ms)
+  ConnectTimeout: 1000
+  # 业务逻辑超时(ms)
+  ReadTimeout: 6000
+  # 同一台实例最大重试次数，不包括首次调用
+  MaxAutoRetries: 3
+  # 重试负载均衡其他实例最大重试次数，不包括首次调用
+  MaxAutoRetriesNextServer: 3
+  # 是否所有操作都重试
+  OkToRetryOnAllOperations: false
+## 配置文件手动选择负载均衡选择算法
+sc-eureka-consumer:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      ## 默认是never
+      ## 调试的时候，看网关请求的地址，以及 映射是否正确。网关请求有误时，可以通过此处排查错误
+      ## 地址 http://localhost:7601/actuator/routes
+      show-details: always
+      enabled: true
+    routes:
+      enabled: true
+
+zuul:
+  # 代理服务 自定义路由映射
+  routes:
+    # 配置路由映射
+    sc-user-consumer: /user/** #给指定的服务作映射，当前是给 sc-user-consumer 添加映射地址为 /user
+  # Zuul 会从 Eureka 上找到所有的注册的服务，然后全部做代理，如果我们不想要它代理其中一些服务，
+  # 只需要添加这个配置即可，多个服务用 “,” 分隔
+  ignored-services: sc-user-provider
+  # 请求前缀
+  prefix: /api/v1
+  # 带上请求前缀
+  strip-prefix: true

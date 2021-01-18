@@ -1,44 +1,14 @@
-server:
-  port: 7501
-spring:
-  application:
-    name: sc-user-consumer
-  security:
-    user:
-      name: zhangchao
-      password: eureka123
-eureka:
-  #  instance:
-  #    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
-  #    prefer-ip-address: true
-  #    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
-  client:
-    serviceUrl:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@euk1.com:7001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@euk2.com:7002/eureka/
-    # 拉取服务注册信息，默认30秒
-    registry-fetch-interval-seconds: 5
-    # 开启健康检查（用于上报节点信息，需要spring-boot-starter-actuator依赖）
-    # 详情查看http://localhost:7101//actuator
-    healthcheck:
-      enabled: true
-  instance:
-    # 持续发送间隔默认30秒，心跳间隔（租期更新时间间隔）
-    lease-renewal-interval-in-seconds: 5
-    # 续约到期时间 默认90秒（租期到期时间）
-    lease-expiration-duration-in-seconds: 60
-
 ribbon:
   # 连接超时(ms)
   ConnectTimeout: 1000
   # 业务逻辑超时(ms)
   ReadTimeout: 6000
   # 同一台实例最大重试次数，不包括首次调用
-  MaxAutoRetries: 0
+  MaxAutoRetries: 3
   # 重试负载均衡其他实例最大重试次数，不包括首次调用
-  MaxAutoRetriesNextServer: 1
+  MaxAutoRetriesNextServer: 3
   # 是否所有操作都重试
   OkToRetryOnAllOperations: false
-
 # 启用 hystrix 熔断机制
 feign:
   hystrix:
@@ -54,7 +24,7 @@ hystrix:
           # 方法一: 线程池
           thread:
             timeoutInMilliseconds: 60000
-          # 方法二: 信号量
+          # 方法二: 或者信号量
 #          strategy: SEMAPHORE
       # 设置熔断器失败的个数，默认为20个，这里我给了100个，只有超过100个才会发生短路
       circuitBreaker:
@@ -75,4 +45,10 @@ management:
   endpoints:
     web:
       exposure:
+        # 开启所有端点
         include: "*"
+  endpoint:
+    health:
+      # 显示所有细节
+      show-details: always
+      enabled: true
